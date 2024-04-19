@@ -1,8 +1,6 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] array) {
-        int[] answer = new int[2];
-        
         int maxNumber = array[0];
         int maxIndex = 0;
         
@@ -13,9 +11,7 @@ class Solution {
             }
         }
         
-        answer[0] = maxNumber;
-        answer[1] = maxIndex;
-        
+        int[] answer = {maxNumber, maxIndex};
         return answer;
     }
 }
