@@ -13,12 +13,12 @@ class Solution {
         
         Collections.sort(numbers);
         
-        String answerStr = "";
+        StringBuilder answerStr = new StringBuilder();
         for(int i = numbers.size()-1; i > -1; i--) {
-            answerStr += numbers.get(i);
+           answerStr.append(numbers.get(i));
         }
         
-        answer = Long.parseLong(answerStr);
+        answer = Long.parseLong(answerStr.toString());
         return answer;
     }
 }
