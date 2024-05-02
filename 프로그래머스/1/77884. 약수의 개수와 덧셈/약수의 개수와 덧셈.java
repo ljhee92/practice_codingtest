@@ -5,8 +5,9 @@ class Solution {
         int answer = 0;
         
         Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        List<Integer> factors = null;
         for(int i = left; i <= right; i++) {
-            List<Integer> factors = new ArrayList<Integer>();
+            factors = new ArrayList<Integer>();
             
             for(int j = 1; j <= i; j++) {
                 if(i % j == 0) {
