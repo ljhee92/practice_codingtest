@@ -3,8 +3,8 @@ import java.util.*;
 public class Solution {
     public int[] solution(int[] arr) {
         List<Integer> numbers = new ArrayList<Integer>();
-        for(int i = 0; i < arr.length; i++) {
-            numbers.add(arr[i]);
+        for(int number : arr) {
+            numbers.add(number);
         } // end for
         
         List<Integer> chkNumbers = new ArrayList<Integer>();
