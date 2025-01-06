@@ -7,13 +7,13 @@ public class Main {
         
         int n = Integer.parseInt(br.readLine());
         br.close();
-
+        
         int m = 0;
         int number = 0;
         
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             number = i;
-            int sum = 0;
+            int sum = 0; 
             
             while (number > 0) {
                 sum += number % 10;
