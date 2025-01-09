@@ -2,28 +2,28 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
+
         String[] numbers = br.readLine().split(" ");
         br.close();
+
+        int num1 = Integer.parseInt(numbers[0]);
+        int num2 = Integer.parseInt(numbers[1]);
+
+        int total = 153;
+        int count = 0;
+        double result = 0.0;
+
+        List<Integer> cards = new ArrayList<>();
+        for (int i = 1; i < 11; i++) {
+            cards.add(i);
+            cards.add(i);
+        }
         
-		int num1 = Integer.parseInt(numbers[0]);
-		int num2 = Integer.parseInt(numbers[1]);
-		
-		int total = 153;
-		int count = 0;
-		double result = 0.0;
-        
-		List<Integer> cards = new ArrayList<>();
-		for (int i = 1; i < 11; i++) {
-			cards.add(i);
-			cards.add(i);
-		}
-        
-		cards.remove(Integer.valueOf(num1));
-		cards.remove(Integer.valueOf(num2));
+        cards.remove(Integer.valueOf(num1));
+        cards.remove(Integer.valueOf(num2));
            
         int younghak = getRank(num1, num2);
         
@@ -42,8 +42,8 @@ public class Main {
         
         result = count / (total * 1.0);
         bw.write(String.format("%.3f", result));
-		bw.flush();
-		bw.close();
+        bw.flush();
+        bw.close();
     }
     
     public static int getRank(int num1, int num2) {
