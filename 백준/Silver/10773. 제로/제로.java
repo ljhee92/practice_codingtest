@@ -15,9 +15,8 @@ public class Main {
             }
         }
         int answer = 0;
-        Object[] numbers = stack.toArray();
-        for (int i = 0; i < stack.size(); i++) {
-            answer += (int)(numbers[i]);
+        for (int num : stack) {
+            answer += num;
         }
         System.out.println(answer);
     }
