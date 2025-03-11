@@ -1,7 +1,5 @@
-import java.awt.*;
 import java.io.*;
 import java.util.*;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,17 +14,21 @@ public class Main {
             Point point = new Point(x, y);
             list.add(point);
         }
-        list.sort(Comparator.<Point>comparingInt(p -> p.x)
-                .thenComparingInt(p -> p.y));
+        list.sort((p1, p2) -> {
+            if (p1.x == p2.x) {
+                return p1.y - p2.y;
+            }
+            return p1.x - p2.x;
+        });
 
-        for (int i = 0; i < n; i++) {
-            System.out.println(list.get(i).getX() + " " + list.get(i).getY());
+        for (Point p : list) {
+            System.out.println(p.getX() + " " + p.getY());
         }
     }
 
     static class Point {
-        int x;
-        int y;
+        private final int x;
+        private final int y;
 
         public Point(int x, int y) {
             this.x = x;
