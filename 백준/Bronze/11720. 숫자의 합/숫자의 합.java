@@ -1,16 +1,17 @@
-import java.util.Scanner;
+import java.io.*;
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int digit = scanner.nextInt();
-        String numberString = scanner.next();
-        char[] numbers = numberString.toCharArray();
-        int result = 0;
-        
-        for (int i = 0; i < numbers.length; i++) {
-            result += numbers[i] - '0';
+    
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+        String[] numbers = br.readLine().split("");
+        int answer = 0;
+        for(int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(numbers[i]);
+            answer += arr[i];
         }
-        
-        System.out.println(result);
+        System.out.println(answer);        
     }
 }
