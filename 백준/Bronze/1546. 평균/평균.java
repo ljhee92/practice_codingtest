@@ -2,20 +2,28 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
+        int[] scores = new int[n];
         StringTokenizer st = new StringTokenizer(br.readLine());
-        List<Integer> scores = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            scores.add(Integer.parseInt(st.nextToken()));
+            scores[i] = Integer.parseInt(st.nextToken());
         }
-        
-        double result = 0.0;
-        int max = Collections.max(scores);
-        for (int i = 0; i < n ; i++) {
-            result += (double) scores.get(i) / max * 100;
+        Arrays.sort(scores);
+        int max = scores[n-1];
+
+        double[] newScores = new double[n];
+        for (int i = 0; i < n; i++) {
+            newScores[i] = (double)scores[i] / max * 100;
         }
-        System.out.println(result / n);
+
+        double sum = 0.0;
+        for (int i = 0; i < n; i++) {
+            sum += newScores[i];
+        }
+
+        System.out.println(sum / n);
     }
 }
