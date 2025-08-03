@@ -26,11 +26,24 @@ public class Main {
             .thenComparing(Country::getBronze, Collections.reverseOrder())
         );
 
-        for (Country country : list) {
-            if (country.equalToName(k)) {
-                System.out.println(list.indexOf(country));
-                break;
+        int rank = 1;
+        Country prev = list.get(0);
+
+        if (prev.equalToName(k)) {
+            System.out.println(rank);
+            return;
+        }
+
+        for (int i = 1; i < n; i++) {
+            Country current = list.get(i);
+            if (current.getGold() != prev.getGold() || current.getSilver() != prev.getSilver() || current.getBronze() != prev.getBronze()) {
+                rank = i+1;
             }
+            if (current.equalToName(k)) {
+                System.out.println(rank);
+                return;
+            }
+            prev = current;
         }
     }
 
