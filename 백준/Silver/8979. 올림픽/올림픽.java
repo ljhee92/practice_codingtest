@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+
+        int name, gold, silver, bronze;
+        List<Country> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            name = Integer.parseInt(st.nextToken());
+            gold = Integer.parseInt(st.nextToken());
+            silver = Integer.parseInt(st.nextToken());
+            bronze = Integer.parseInt(st.nextToken());
+            list.add(new Country(name, gold, silver, bronze));
+        }
+
+        list.sort(
+            Comparator.comparing(Country::getGold, Collections.reverseOrder())
+            .thenComparing(Country::getSilver, Collections.reverseOrder())
+            .thenComparing(Country::getBronze, Collections.reverseOrder())
+        );
+
+        for (Country country : list) {
+            if (country.equalToName(k)) {
+                System.out.println(list.indexOf(country));
+                break;
+            }
+        }
+    }
+
+    private static class Country {
+        
+        private final int name;
+        private final int gold;
+        private final int silver;
+        private final int bronze;
+
+        public Country(int name, int gold, int silver, int bronze) {
+            this.name = name;
+            this.gold = gold;
+            this.silver = silver;
+            this.bronze = bronze;
+        }
+
+        public boolean equalToName(int name) {
+            return this.name == name;
+        }
+
+        public int getGold() {
+            return this.gold;
+        }
+
+        public int getSilver() {
+            return this.silver;
+        }
+
+        public int getBronze() {
+            return this.bronze;
+        }
+    }
+}
