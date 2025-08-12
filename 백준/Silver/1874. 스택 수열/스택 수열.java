@@ -2,35 +2,33 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] numbers = new int[n];
+        
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            numbers[i] = Integer.parseInt(br.readLine());
+            numbers.add(Integer.parseInt(br.readLine()));
         }
         
-        Deque<Integer> stack = new ArrayDeque<>();
-        List<String> results = new ArrayList<>();
-        int index = 0;
-        for (int i = 1; i <= n; i++) {
-            stack.push(i);
-            results.add("+");
+        Stack<Integer> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        int pushNumber = 1;
+        for (int number : numbers) {
+            while (pushNumber <= number) {
+                stack.push(pushNumber++);
+                sb.append("+\n");
+            }
             
-            while (!stack.isEmpty() && stack.peek() == numbers[index]) {
+            if (stack.peek() == number) {
                 stack.pop();
-                results.add("-");
-                index++;
+                sb.append("-\n");
+            } else {
+                System.out.println("NO");
+                return;
             }
         }
-        
-        if (!stack.isEmpty()) {
-            System.out.println("NO");
-            return;
-        }
-        
-        for (int i = 0; i < results.size(); i++) {
-            System.out.println(results.get(i));
-        }
+        System.out.println(sb);
     }
 }
