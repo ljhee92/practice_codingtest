@@ -8,6 +8,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<>();
 
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int firstNum = Integer.parseInt(st.nextToken());
@@ -16,25 +17,26 @@ public class Main {
                 stack.push(number);
             } else if (firstNum == 2) {
                 if (stack.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append("-1\n");
                 } else {
-                    System.out.println(stack.pop());
+                    sb.append(stack.pop()).append("\n");
                 }
             } else if (firstNum == 3) {
-                System.out.println(stack.size());
+                sb.append(stack.size()).append("\n");
             } else if (firstNum == 4) {
                 if (stack.isEmpty()) {
-                    System.out.println(1);
+                    sb.append("1\n");
                 } else {
-                    System.out.println(0);
+                    sb.append("0\n");
                 }
             } else {
                 if (stack.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append("-1\n");
                 } else {
-                    System.out.println(stack.peek());
+                    sb.append(stack.peek()).append("\n");
                 }
             }
         }
+        System.out.println(sb);
     }
 }
