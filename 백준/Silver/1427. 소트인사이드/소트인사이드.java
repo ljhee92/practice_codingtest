@@ -1,16 +1,21 @@
 import java.io.*;
 import java.util.*;
-import java.util.stream.*;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
-        List<Integer> numbers = Arrays.stream(br.readLine().split(""))
-            .map(Integer::parseInt)
-            .sorted(Comparator.reverseOrder())
-            .collect(Collectors.toList());
-        
-        numbers.forEach(System.out::print);
+        String[] arr = br.readLine().split("");
+        Integer[] numbers = new Integer[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            numbers[i] = Integer.parseInt(arr[i]);
+        }
+        Arrays.sort(numbers, Comparator.reverseOrder());
+
+        StringBuilder sb = new StringBuilder();
+        for (int num : numbers) {
+            sb.append(num);
+        }
+        System.out.println(sb);
     }
 }
