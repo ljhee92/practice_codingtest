@@ -10,16 +10,18 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
-        List<Integer> numbers = new ArrayList<>();
+        int[] arr = new int[n];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            int number = Integer.parseInt(st.nextToken());
-            numbers.add(number);
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        Collections.sort(numbers);
+        Arrays.sort(arr);
+        List<Integer> numbers = new ArrayList<>();
+        for (int num : arr) {
+            numbers.add(num);
+        }
         
         int answer = numbers.get(k-1);
         System.out.println(answer);
-
     }
 }
