@@ -2,26 +2,27 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    
+
     public static void main(String[] args) throws Exception {
+        // 1초 -> 1억
+        // n 최대 10, k 최대 1억 -> ?? 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken()); // 동전 종류의 개수
+        int k = Integer.parseInt(st.nextToken()); // 총 금액
         
-        int[] arr = new int[n];
+        List<Integer> coins = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+            int coin = Integer.parseInt(br.readLine());
+            coins.add(coin);
         }
-        
-        int count = 0;
-        for (int i = n-1; i >= 0; i--) {
-            if (arr[i] <= k) {
-                count += (k / arr[i]);
-                k = k % arr[i];
-            }
+        Collections.sort(coins, Collections.reverseOrder());
+
+        int answer = 0;
+        for (int coin : coins) {
+            answer += k/coin;
+            k %= coin;
         }
-        
-        System.out.println(count);
+        System.out.println(answer);
     }
 }
