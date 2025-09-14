@@ -9,6 +9,8 @@ public class Main {
 
         StringTokenizer st;
         Deque<Integer> deque = new ArrayDeque<>();
+        StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
@@ -23,37 +25,39 @@ public class Main {
                 deque.addLast(b);
             } else if (a == 3) {
                 if (deque.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append(-1).append("\n");
                 } else {
-                    System.out.println(deque.pollFirst());
+                    sb.append(deque.pollFirst()).append("\n");
                 }
             } else if (a == 4) {
                 if (deque.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append(-1).append("\n");
                 } else {
-                    System.out.println(deque.pollLast());
+                    sb.append(deque.pollLast()).append("\n");
                 }
             } else if (a == 5) {
-                System.out.println(deque.size());
+                sb.append(deque.size()).append("\n");
             } else if (a == 6) {
                 if (deque.isEmpty()) {
-                    System.out.println(1);
+                    sb.append(1).append("\n");
                 } else {
-                    System.out.println(0);
+                    sb.append(0).append("\n");
                 }
             } else if (a == 7) {
                 if (deque.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append(-1).append("\n");
                 } else {
-                    System.out.println(deque.peekFirst());
+                    sb.append(deque.peekFirst()).append("\n");
                 }
             } else if (a == 8) {
                 if (deque.isEmpty()) {
-                    System.out.println(-1);
+                    sb.append(-1).append("\n");
                 } else {
-                    System.out.println(deque.peekLast());
+                    sb.append(deque.peekLast()).append("\n");
                 }
             }
         }
+
+        System.out.println(sb);
     }
 }
