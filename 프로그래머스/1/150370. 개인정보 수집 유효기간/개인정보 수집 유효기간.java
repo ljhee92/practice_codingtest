@@ -30,9 +30,9 @@ class Solution {
             
             LocalDate parsedGetDate = parseDate(getDate);
             int canSaveMonth = termsMap.get(type);
-            LocalDate canSaveDate = parsedGetDate.plusMonths(canSaveMonth);
+            LocalDate canSaveDate = parsedGetDate.plusMonths(canSaveMonth).minusDays(1);
             
-            if (canSaveDate.isBefore(parsedToday) || canSaveDate.isEqual(parsedToday)) {
+            if (parsedToday.isAfter(canSaveDate)) {
                 answer.add(i+1);
             }
         }
